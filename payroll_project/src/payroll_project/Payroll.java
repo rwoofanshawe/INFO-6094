@@ -16,6 +16,11 @@ public class Payroll {
 	
 	public static String opt = "";
 	
+	public static Vehicle employeeVehicle;
+	public static String vehicleMake = "";
+	public static String vehicleModel = "";
+	public static String hasVehicle = "";
+	
 	public static void main(String[] args) {
 				
 		/* --- SCANNER --- */
@@ -28,14 +33,64 @@ public class Payroll {
 			System.out.print("Enter Name: ");
 			name = input.nextLine();
 			
-			System.out.print("Enter Employee ID: ");
-			empID = Integer.parseInt(input.nextLine());
+	        while (true) {
+	            try {
+	    			System.out.print("Enter Employee ID: ");
+	    			empID = Integer.parseInt(input.nextLine());
+	                break; // If the input is valid, exit the loop
+	            } catch (NumberFormatException e) {
+	                System.out.println("Invalid input! Please enter a valid Employee ID. Press Enter key.");
+	                input.nextLine();
+	            }
+	        }				
 			
-			System.out.print("Enter Year of Birth: ");
-			yearOfBirth = Integer.parseInt(input.nextLine());
+	        while (true) {
+	            try {
+	                System.out.print("Enter Year of Birth: ");
+	                yearOfBirth = Integer.parseInt(input.nextLine());
+	                break; // If the input is valid, exit the loop
+	            } catch (NumberFormatException e) {
+	                System.out.println("Invalid input! Please enter a valid Year of Birth. Press Enter key.");
+	                input.nextLine();
+	            }
+	        }					
 			
-			System.out.print("Enter Work Type [1 - PartTime / 2 - FullTime]: ");
-			employeeType = Integer.parseInt(input.nextLine());
+	        while (true) {
+	            try {
+	    			System.out.print("Enter Work Type [1 - PartTime / 2 - FullTime]: ");
+	    			employeeType = Integer.parseInt(input.nextLine());
+	                break; // If the input is valid, exit the loop
+	            } catch (NumberFormatException e) {
+	                System.out.println("Invalid input! Please enter a valid Work Type. Press Enter key.");
+	                input.nextLine();
+	            }
+	        }			
+			
+	        while (true) {
+	            System.out.println("Do you have a vehicle? [N - No / Y - Yes]:");
+	            hasVehicle = input.nextLine().trim().toUpperCase();
+
+	            if (hasVehicle.equals("Y") || hasVehicle.equals("N")) {
+	                break; // If the input is valid ('Y' or 'N'), exit the loop
+	            } else {
+	                System.out.println("Invalid input! Please enter 'Y' or 'N'. Press Enter key.");
+	                input.nextLine();
+	            }
+	        }
+		    
+		    if(hasVehicle.equals("Y")) {
+			    System.out.println("What is the Vehicle Model?:");
+			    vehicleModel = input.nextLine(); //read employee model
+
+			    System.out.println("What is the Vehicle Make?:");
+			    vehicleMake = input.nextLine(); //read employee model
+			    
+			    employeeVehicle = new Vehicle(vehicleModel, vehicleMake);
+			    
+		    } else {
+		    	employeeVehicle = new Vehicle("NA", "NA"); //Vehicle entry not applicable (NA)
+		    }
+			
 			
 			if (employeeType == 1) { // Part Time				
 				
@@ -54,6 +109,8 @@ public class Payroll {
 				empPT1.setyearOfBirth(yearOfBirth);
 				empPT1.setWage(empPT1.caclEarnings(employeeHoursWorked, employeeRate));
 				empPT1.setWageAfterTax(empPT1.caclIncomeTax(empPT1.getWage()));
+				
+	    		empPT1.setEmployeeVehicle(employeeVehicle);
 				
 				arrayEmployee.add(empPT1);
 				
@@ -74,7 +131,9 @@ public class Payroll {
 				empFT1.setyearOfBirth(yearOfBirth);
 				empFT1.setWage(empFT1.caclEarnings(employeeSalary, employeeBonus));
 				empFT1.setWageAfterTax(empFT1.caclIncomeTax(empFT1.getWage()));
-				
+
+		    	empFT1.setEmployeeVehicle(employeeVehicle);
+		    	
 				arrayEmployee.add(empFT1);
 				
 			} else {
@@ -83,8 +142,20 @@ public class Payroll {
 				System.exit(0);
 			}
 			
-			System.out.print("Continue? [N - No / Y - Yes]: ");
-			opt = input.nextLine();	
+	
+			
+	        while (true) {
+				System.out.print("Continue? [N - No / Y - Yes]: ");
+				opt = input.nextLine().toUpperCase();
+
+	            if (opt.equals("Y") || opt.equals("N")) {
+	                break; // If the input is valid ('Y' or 'N'), exit the loop
+	            } else {
+	                System.out.println("Invalid input! Please enter 'Y' or 'N'. Press Enter key.");
+	                input.nextLine();
+	            }
+	        }			
+			
 			
 		} while (opt.equals("Y"));
 		
@@ -94,7 +165,12 @@ public class Payroll {
 		System.out.println("==== OUTPUT ====");
 		for (int x = 0; x < arrayEmployee.size(); x++) {
 			
-			System.out.println((x + 1) + ". " + arrayEmployee.get(x).getName() + ", " + arrayEmployee.get(x).getEmpID() + ", " + arrayEmployee.get(x).getWorkType() + ", $" + arrayEmployee.get(x).getWage() + ", $" + arrayEmployee.get(x).getWageAfterTax());
+			System.out.println((x + 1) + ". " + arrayEmployee.get(x).getName() + ", " 
+											  + arrayEmployee.get(x).getEmpID() + ", " 
+					                          + arrayEmployee.get(x).getWorkType() + ", $" + arrayEmployee.get(x).getWage() + ", $" 
+											  + arrayEmployee.get(x).getWageAfterTax() + ", "
+											  + arrayEmployee.get(x).getEmployeeVehicle().getMake() + ", "
+											  + arrayEmployee.get(x).getEmployeeVehicle().getModel());
 			
 			// count total employee by work type
 			if(arrayEmployee.get(x).getWorkType().equals("Part-Time"))

@@ -12,6 +12,7 @@ abstract class Employee {
 	private String empType = "";
 	private double wage = 0.0;
 	private double wageAfterTax = 0.0;
+	private Vehicle employeeVehicle;
 	
 	/* --- GETTER AND SETTER --- */
 	
@@ -62,5 +63,15 @@ abstract class Employee {
 	public void setWageAfterTax(double newWageAfterTax) {
 		this.wageAfterTax = newWageAfterTax;
 	}
+	
+	public Vehicle getEmployeeVehicle() {
+		return employeeVehicle;
+	}
+	
+	public void setEmployeeVehicle(Vehicle employeeVehicle) {
+		this.employeeVehicle = employeeVehicle;
+	}
+	
+	
 
 }
