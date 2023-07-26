@@ -88,7 +88,7 @@ public class Payroll {
 			    employeeVehicle = new Vehicle(vehicleModel, vehicleMake);
 			    
 		    } else {
-		    	employeeVehicle = new Vehicle("NA", "NA"); //Vehicle entry not applicable (NA)
+		    	employeeVehicle = new Vehicle("N/A", "N/A"); //Vehicle entry not applicable (NA)
 		    }
 			
 			
@@ -185,14 +185,21 @@ public class Payroll {
 		int ctrFullTime = 0, ctrPartTime = 0;
 		double totalWages = 0, totalWagesAfterTax = 0;
 		System.out.println("==== OUTPUT ====");
+
+        // Print column headers with even spacing
+        System.out.format("%-4s%-20s%-20s%-12s%-16s%-16s%-15s%-15s%n",
+                "No.", "Name", "Employee ID", "Work Type", "Wage", "Wage After Tax", "Vehicle Make", "Vehicle Model");
+		
 		for (int x = 0; x < arrayEmployee.size(); x++) {
-			
-			System.out.println((x + 1) + ". " + arrayEmployee.get(x).getName() + ", " 
-											  + arrayEmployee.get(x).getEmpID() + ", " 
-					                          + arrayEmployee.get(x).getWorkType() + ", $" + arrayEmployee.get(x).getWage() + ", $" 
-											  + arrayEmployee.get(x).getWageAfterTax() + ", "
-											  + arrayEmployee.get(x).getEmployeeVehicle().getMake() + ", "
-											  + arrayEmployee.get(x).getEmployeeVehicle().getModel());
+
+            System.out.format("%-4s%-20s%-20s%-12s$%-15.2f$%-15.2f%-15s%-15s%n",
+                    (x + 1), arrayEmployee.get(x).getName(), 
+                    arrayEmployee.get(x).getEmpID(), 
+                    arrayEmployee.get(x).getWorkType(),
+                    arrayEmployee.get(x).getWage(), 
+                    arrayEmployee.get(x).getWageAfterTax(), 
+                    arrayEmployee.get(x).getEmployeeVehicle().getMake(), 
+                    arrayEmployee.get(x).getEmployeeVehicle().getModel());
 			
 			// count total employee by work type
 			if(arrayEmployee.get(x).getWorkType().equals("Part-Time"))
