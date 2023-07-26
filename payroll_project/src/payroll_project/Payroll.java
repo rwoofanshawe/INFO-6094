@@ -10,6 +10,7 @@ public class Payroll {
 	public static int yearOfBirth = 0;
 	public static int employeeType = 0;
 	public static double employeeHoursWorked = 0.0;
+	public static double employeeSalary = 0.0;
 	public static double employeeBonus = 0.0;
 	public static double employeeRate = 0.0;
 	
@@ -57,6 +58,9 @@ public class Payroll {
 				arrayEmployee.add(empPT1);
 				
 			} else if (employeeType == 2) { // Full Time
+
+				System.out.print("Enter Salary: ");
+				employeeSalary = Double.parseDouble(input.nextLine());				
 				
 				System.out.print("Enter Bonus: ");
 				employeeBonus = Double.parseDouble(input.nextLine());
@@ -68,7 +72,7 @@ public class Payroll {
 				empFT1.setEmpID(empID);
 				empFT1.setWorkType("Full-Time");
 				empFT1.setyearOfBirth(yearOfBirth);
-				empFT1.setWage(empFT1.caclEarnings(employeeBonus));
+				empFT1.setWage(empFT1.caclEarnings(employeeSalary, employeeBonus));
 				empFT1.setWageAfterTax(empFT1.caclIncomeTax(empFT1.getWage()));
 				
 				arrayEmployee.add(empFT1);

@@ -1,6 +1,9 @@
 package payroll_project;
 
-public class Employee {	
+abstract class Employee {	
+	
+	public abstract double caclEarnings(double parameter1, double parameter2);
+	public abstract double caclIncomeTax(double parameter1);
 	
 	private int yearOfBirth = 0;	
 	

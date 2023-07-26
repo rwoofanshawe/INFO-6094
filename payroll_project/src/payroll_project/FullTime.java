@@ -2,11 +2,12 @@ package payroll_project;
 
 public class FullTime extends Employee {
 	
-	private double salary = 4000.0; // salary of fulltime employees are fixed
+	private double salary = 0.0; 
 	private double bonus = 0.0;
 	
-	public double caclEarnings(double bonus2) {
+	public double caclEarnings(double salary2, double bonus2) {
 		// compute earnings before tax
+		this.salary = salary2;
 		this.bonus = bonus2;
 		
 		return (this.salary + this.bonus);
