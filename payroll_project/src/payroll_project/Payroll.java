@@ -94,11 +94,21 @@ public class Payroll {
 			
 			if (employeeType == 1) { // Part Time				
 				
-				System.out.print("Enter Hours Worked: ");
-				employeeHoursWorked = Double.parseDouble(input.nextLine());
-				
-				System.out.print("Enter Rate of Pay: ");
-				employeeRate = Double.parseDouble(input.nextLine());
+		        while (true) {
+		            try {
+		                System.out.print("Enter Hours Worked: ");
+		                employeeHoursWorked = Double.parseDouble(input.nextLine());
+
+		                System.out.print("Enter Rate of Pay: ");
+		                employeeRate = Double.parseDouble(input.nextLine());
+
+		                // If both inputs are valid, exit the loop
+		                break;
+		            } catch (NumberFormatException e) {
+		                System.out.println("Invalid input! Please enter a valid number. Press Enter.");
+		                input.nextLine();
+		            }
+		        }
 				
 				PartTime empPT1 = new PartTime();
 				
@@ -116,11 +126,23 @@ public class Payroll {
 				
 			} else if (employeeType == 2) { // Full Time
 
-				System.out.print("Enter Salary: ");
-				employeeSalary = Double.parseDouble(input.nextLine());				
+		        while (true) {
+		            try {
+						System.out.print("Enter Salary: ");
+						employeeSalary = Double.parseDouble(input.nextLine());				
+						
+						System.out.print("Enter Bonus: ");
+						employeeBonus = Double.parseDouble(input.nextLine());
+
+		                // If both inputs are valid, exit the loop
+		                break;
+		            } catch (NumberFormatException e) {
+		                System.out.println("Invalid input! Please enter a valid number. Press Enter.");
+		                input.nextLine();
+		            }
+		        }
 				
-				System.out.print("Enter Bonus: ");
-				employeeBonus = Double.parseDouble(input.nextLine());
+				
 				
 				FullTime empFT1 = new FullTime();
 				
