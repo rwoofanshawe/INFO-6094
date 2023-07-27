@@ -64,7 +64,7 @@ public class Payroll {
 
 	    	        if (isIDExists) {
 	    	            System.out.println("Employee ID already exists in the list.");
-	    	            int err = Integer.parseInt("X");
+	    	            int err = Integer.parseInt("X"); //force a NumberFormatException
 	    	        }	    			
 	
 	                break; // If the input is valid, exit the loop
@@ -85,7 +85,7 @@ public class Payroll {
 	                    // If the input is valid (between 1900 and the current year), exit the loop
 	                    break;
 	                } else {
-	                    int err = Integer.parseInt("X");
+	                    int err = Integer.parseInt("X"); //force a NumberFormatException
 	                }
 	            } catch (NumberFormatException e) {
 	                System.out.println("Invalid input! Please enter a valid Year of Birth between 1900 and the current year (" + currentYear + "). Press Enter key.");
