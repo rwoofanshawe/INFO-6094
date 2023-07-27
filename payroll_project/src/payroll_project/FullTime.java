@@ -18,7 +18,7 @@ public class FullTime extends Employee {
 		// compute earnings after tax
 		double tax = 0.15;
 		
-		return (salary - (salary * 0.18)); // 18% for fulltime
+		return (salary - (salary * 0.18)); // 18% for full time
 		
 	}
 

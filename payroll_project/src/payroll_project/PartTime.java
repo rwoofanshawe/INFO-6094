@@ -18,7 +18,7 @@ public class PartTime extends Employee{
 		// compute earnings after tax
 		double tax = 0.15;
 		
-		return (salary - (salary * 0.15)); // 15% for parttime
+		return (salary - (salary * 0.15)); // 15% for part time
 		
 	}
 
