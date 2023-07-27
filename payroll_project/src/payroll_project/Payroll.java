@@ -7,22 +7,22 @@ import java.util.regex.Pattern;
 public class Payroll {	
 	
 	/* --- DECLARE VARIABLES --- */
-	public static ArrayList<Employee> arrayEmployee = new ArrayList<Employee>(); // Employee class for array type
-	public static String name = "";
-	public static int empID = 0;
-	public static int yearOfBirth = 0;
-	public static int employeeType = 0;
-	public static double employeeHoursWorked = 0.0;
-	public static double employeeSalary = 0.0;
-	public static double employeeBonus = 0.0;
-	public static double employeeRate = 0.0;
+	private static ArrayList<Employee> arrayEmployee = new ArrayList<Employee>(); // Employee class for array type
+	private static String name = "";
+	private static int empID = 0;
+	private static int yearOfBirth = 0;
+	private static int employeeType = 0;
+	private static double employeeHoursWorked = 0.0;
+	private static double employeeSalary = 0.0;
+	private static double employeeBonus = 0.0;
+	private static double employeeRate = 0.0;
 	
-	public static String opt = "";
+	private static String opt = "";
 	
-	public static Vehicle employeeVehicle;
-	public static String vehicleMake = "";
-	public static String vehicleModel = "";
-	public static String hasVehicle = "";
+	private static Vehicle employeeVehicle;
+	private static String vehicleMake = "";
+	private static String vehicleModel = "";
+	private static String hasVehicle = "";
 	
 	public static void main(String[] args) {
 				
