@@ -14,15 +14,22 @@ public class Vehicle {
 		this.model = model;
 		this.make = make;
 	}
+	
+	/* --- LEARNING GOALS: ENCAPSULATION AND DATA HIDING--- */
+	/* --- GETTER AND SETTER --- */
+	
 	public String getModel() {
 		return model;
 	}
+	
 	public void setModel(String model) {
 		this.model = model;
 	}
+	
 	public String getMake() {
 		return make;
 	}
+	
 	public void setMake(String make) {
 		this.make = make;
 	}

@@ -1,5 +1,5 @@
 package payroll_project;
-
+/* --- LEARNING GOALS: ABSTRACTION --- */
 abstract class Employee {	
 	
 	public abstract double caclEarnings(double parameter1, double parameter2);
@@ -12,8 +12,11 @@ abstract class Employee {
 	private String empType = "";
 	private double wage = 0.0;
 	private double wageAfterTax = 0.0;
+	
+	/* --- LEARNING GOALS: COMPOSITION --- */
 	private Vehicle employeeVehicle;
 	
+	/* --- LEARNING GOALS: ENCAPSULATION AND DATA HIDING--- */
 	/* --- GETTER AND SETTER --- */
 	
 	public String getName() {
