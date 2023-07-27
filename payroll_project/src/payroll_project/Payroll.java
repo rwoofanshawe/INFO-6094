@@ -201,6 +201,9 @@ public class Payroll {
 						System.out.print("Enter Salary: ");
 						employeeSalary = Double.parseDouble(input.nextLine());				
 						
+						if(employeeSalary < 1)
+							throw new NumberFormatException();
+
 						System.out.print("Enter Bonus: ");
 						employeeBonus = Double.parseDouble(input.nextLine());
 
