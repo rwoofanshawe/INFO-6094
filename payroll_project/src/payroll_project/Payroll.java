@@ -34,10 +34,11 @@ public class Payroll {
 		do {
 			System.out.println("==== INPUT ====");
 			
+			// Loop until a valid name is entered
 	        while (true) {
 	            System.out.print("Enter Name: ");
 	            name = input.nextLine();
-
+	            // Use the regular expression pattern to validate the name
 	            Matcher matcher = pattern.matcher(name);
 	            if (matcher.matches()) {
 	                break; // Exit the loop since the input is valid
@@ -64,7 +65,7 @@ public class Payroll {
 
 	    	        if (isIDExists) {
 	    	            System.out.println("Employee ID already exists in the list.");
-	    	            int err = Integer.parseInt("X");
+	    	            int err = Integer.parseInt("X"); // Create a dummy error to prevent exiting the loop
 	    	        }	    			
 	
 	                break; // If the input is valid, exit the loop
@@ -85,7 +86,7 @@ public class Payroll {
 	                    // If the input is valid (between 1900 and the current year), exit the loop
 	                    break;
 	                } else {
-	                    int err = Integer.parseInt("X");
+	                    int err = Integer.parseInt("X"); // Create a dummy error to prevent exiting the loop
 	                }
 	            } catch (NumberFormatException e) {
 	                System.out.println("Invalid input! Please enter a valid Year of Birth between 1900 and the current year (" + currentYear + "). Press Enter key.");
@@ -106,6 +107,7 @@ public class Payroll {
 	                    input.nextLine();
 	                }
 	            } catch (NumberFormatException e) {
+	            	// If the input is not a valid integer, prompt the user to try again
 	                System.out.println("Invalid input! Please enter a valid Work Type. Press Enter key.");
 	                input.nextLine();
 	            }
@@ -117,14 +119,14 @@ public class Payroll {
 
 	            if (hasVehicle.equals("Y") || hasVehicle.equals("N")) {
 	                break; // If the input is valid ('Y' or 'N'), exit the loop
-	            } else {
+	            } else { // If the input is invalid, prompt the user to try again
 	                System.out.println("Invalid input! Please enter 'Y' or 'N'. Press Enter key.");
 	                input.nextLine();
 	            }
 	        }
 		    
 		    if(hasVehicle.equals("Y")) {
-			    
+		    	// Loop to get a valid input for the vehicle model
 		        while (true) {
 		            System.out.print("What is the Vehicle Model?:");
 		            vehicleModel = input.nextLine();
@@ -132,7 +134,7 @@ public class Payroll {
 		            Matcher matcherModel = pattern.matcher(vehicleModel);
 		            if (matcherModel.matches()) {
 		                break; // Exit the loop since the input is valid
-		            } else {
+		            } else { // If the input is invalid, prompt the user to try again
 		                System.out.println("Invalid Vehicle Model. Please enter only alphanumeric characters and special characters - , .");
 		                System.out.println("Press enter to continue");
 		                input.nextLine();
@@ -146,16 +148,16 @@ public class Payroll {
 		            Matcher matcherMake = pattern.matcher(vehicleMake);
 		            if (matcherMake.matches()) {
 		                break; // Exit the loop since the input is valid
-		            } else {
+		            } else { // If the input is invalid, prompt the user to try again
 		                System.out.println("Invalid Vehicle Make. Please enter only alphanumeric characters and special characters - , .");
 		                System.out.println("Press enter to continue");
 		                input.nextLine();
 		            }
 		        }
-
+		        // Create a new Vehicle object with the provided model and make
 			    employeeVehicle = new Vehicle(vehicleModel, vehicleMake);
 			    
-		    } else {
+		    } else { // If the employee does not have a vehicle
 		    	employeeVehicle = new Vehicle("N/A", "N/A"); //Vehicle entry not applicable (NA)
 		    }
 			
@@ -177,7 +179,7 @@ public class Payroll {
 		                input.nextLine();
 		            }
 		        }
-				
+		     // Create a new PartTime object using the default constructor
 				PartTime empPT1 = new PartTime();
 				
 				// using constructors
@@ -189,11 +191,11 @@ public class Payroll {
 				empPT1.setWageAfterTax(empPT1.caclIncomeTax(empPT1.getWage()));
 				
 	    		empPT1.setEmployeeVehicle(employeeVehicle);
-				
+	    		// Add the PartTime object to the arrayEmployee ArrayList
 				arrayEmployee.add(empPT1);
 				
 			} else if (employeeType == 2) { // Full Time
-
+				// Prompt the user to enter the salary and bonus for the full-time employee
 		        while (true) {
 		            try {
 						System.out.print("Enter Salary: ");
@@ -211,7 +213,7 @@ public class Payroll {
 		        } 
 				
 				
-				
+		     // Create a new FullTime employee object empFT1 using the FullTime class
 				FullTime empFT1 = new FullTime();
 				
 				// using constructors
@@ -223,7 +225,7 @@ public class Payroll {
 				empFT1.setWageAfterTax(empFT1.caclIncomeTax(empFT1.getWage()));
 
 		    	empFT1.setEmployeeVehicle(employeeVehicle);
-		    	
+		    	// Add the FullTime employee empFT1 to the arrayEmployee ArrayList
 				arrayEmployee.add(empFT1);
 				
 			} else if (employeeType == 3) { // Intern
@@ -257,7 +259,7 @@ public class Payroll {
 				empIN1.setWageAfterTax(empIN1.caclIncomeTax(empIN1.getWage()));
 
 				empIN1.setEmployeeVehicle(employeeVehicle);
-		    	
+				// Add the Intern employee object to the arrayEmployee ArrayList
 				arrayEmployee.add(empIN1);
 				
 			} else {
@@ -268,7 +270,7 @@ public class Payroll {
 			
 	
 			
-	        while (true) {
+	        while (true) { // Prompt the user to continue or not
 				System.out.print("Continue? [N - No / Y - Yes]: ");
 				opt = input.nextLine().toUpperCase();
 
