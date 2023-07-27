@@ -74,21 +74,32 @@ public class Payroll {
 	            }
 	        }				
 			
-            // Get the current year
-            int currentYear = LocalDate.now().getYear();
+	        // Get the current year
+	        int currentYear = LocalDate.now().getYear();
+
 	        while (true) {
 	            try {
 	                System.out.print("Enter Year of Birth: ");
 	                yearOfBirth = Integer.parseInt(input.nextLine());
 
+	                // Check if the input is valid (between 1900 and the current year)
 	                if (yearOfBirth >= 1900 && yearOfBirth <= currentYear) {
-	                    // If the input is valid (between 1900 and the current year), exit the loop
-	                    break;
+	                    // Calculate age based on year of birth and current year
+	                    int age = currentYear - yearOfBirth;
+
+	                    if (age >= 16) {
+	                        // If the age is 16 years or older, exit the loop
+	                        break;
+	                    } else {
+	                        // Force a NumberFormatException by attempting to parse "X"
+	                        int err = Integer.parseInt("X");
+	                    }
 	                } else {
-	                    int err = Integer.parseInt("X"); //force a NumberFormatException
+	                    // The input is not valid; handle accordingly
+	                    throw new NumberFormatException();
 	                }
 	            } catch (NumberFormatException e) {
-	                System.out.println("Invalid input! Please enter a valid Year of Birth between 1900 and the current year (" + currentYear + "). Press Enter key.");
+	                System.out.println("Invalid input! Please enter a valid Year of Birth between 1900 and the current year (" + currentYear + ") that would make you 16 years or older. Press Enter key.");
 	                input.nextLine();
 	            }
 	        }				
