@@ -178,8 +178,14 @@ public class Payroll {
 		                System.out.print("Enter Hours Worked: ");
 		                employeeHoursWorked = Double.parseDouble(input.nextLine());
 
+						if (employeeHoursWorked < 1)
+							throw new NumberFormatException();
+
 		                System.out.print("Enter Rate of Pay: ");
 		                employeeRate = Double.parseDouble(input.nextLine());
+
+						if(employeeRate < 1)
+							throw new NumberFormatException();
 
 		                // If both inputs are valid, exit the loop
 		                break;
