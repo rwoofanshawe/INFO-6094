@@ -97,7 +97,14 @@ public class Payroll {
 	            try {
 	    			System.out.print("Enter Work Type [1 - PartTime / 2 - FullTime / 3 - Intern]: ");
 	    			employeeType = Integer.parseInt(input.nextLine());
-	                break; // If the input is valid, exit the loop
+	                if (employeeType >= 1 && employeeType <= 3) {
+	                    // Valid input, process the employee based on the type
+	                	break; // If the input is valid, exit the loop
+	                } else {
+	                    // Invalid input, prompt the user to try again
+	                    System.out.println("Invalid input! Please enter a valid Work Type. Press Enter key.");
+	                    input.nextLine();
+	                }
 	            } catch (NumberFormatException e) {
 	                System.out.println("Invalid input! Please enter a valid Work Type. Press Enter key.");
 	                input.nextLine();
@@ -105,7 +112,7 @@ public class Payroll {
 	        }			
 			
 	        while (true) {
-	            System.out.println("Do you have a vehicle? [N - No / Y - Yes]:");
+	            System.out.print("Do you have a vehicle? [N - No / Y - Yes]:");
 	            hasVehicle = input.nextLine().trim().toUpperCase();
 
 	            if (hasVehicle.equals("Y") || hasVehicle.equals("N")) {
@@ -119,7 +126,7 @@ public class Payroll {
 		    if(hasVehicle.equals("Y")) {
 			    
 		        while (true) {
-		            System.out.println("What is the Vehicle Model?:");
+		            System.out.print("What is the Vehicle Model?:");
 		            vehicleModel = input.nextLine();
 
 		            Matcher matcherModel = pattern.matcher(vehicleModel);
@@ -133,7 +140,7 @@ public class Payroll {
 		        }
 
 		        while (true) {
-		            System.out.println("What is the Vehicle Make?:");
+		            System.out.print("What is the Vehicle Make?:");
 		            vehicleMake = input.nextLine();
 
 		            Matcher matcherMake = pattern.matcher(vehicleMake);
